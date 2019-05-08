@@ -1,0 +1,109 @@
+{% extends "common.html" %}
+{% load staticfiles %}
+    {% block title %} 登录{% endblock %}
+    {% block selfcss %}
+        <style>
+            #loginform{
+                width:50%;
+                margin:0 auto;
+                min-width:800px;
+            }
+        </style>
+    {% endblock %}
+    {% block common %}
+    <form method="post" action="#" id="loginform">
+        <div class="fields">
+            <div class="field">
+                <input type="text" name="username" id="username" placeholder="用户名">
+            </div>
+            <div class="field">
+                <input type="password" name="password" id="password" placeholder="密码">
+            </div>
+            <div class="field">
+                <input type="text" name="validcode" id="validcode" placeholder="验证码" style="width: 60%;display: inline-block;min-width: 300px;"><img style="float: right;" id="validcode2" src="{% url 'get_validcode_img' %}"/>
+            </div>
+            <div class="field">
+                <input type="checkbox" name="remember" id="remember" value=""  ><label for="remember">记住密码</label>
+                <span id="error" style="float: right;color: #f2849e;font-family: 'Source Sans Pro', Helvetica, sans-serif;"></span>
+            </div>
+            {% csrf_token %}
+           {% comment %}  <div class="field">
+                <input type="email" name="email" id="email" placeholder="邮箱" />
+            </div>
+           <div class="field">
+                <select name="department" id="department">
+                    <option value="">买家/卖家</option>
+                    <option value="0">卖家</option>
+                    <option value="1">买家</option>
+                </select>
+            </div>
+            <div class="field">
+                <input type="checkbox" id="human" name="human" /><label for="human">I'm a human</label>
+            </div>
+            <div class="field">
+                <label>But are you a robot?</label>
+                <input type="radio" id="robot_yes" name="robot" /><label for="robot_yes">Yes</label>
+                <input type="radio" id="robot_no" name="robot" /><label for="robot_no">No</label>
+            </div>{% endcomment %}
+            <div class="field" style="text-align: right;">
+                <input id="sub_btn" class="button" type="button" value="提交" style="padding: 0 100px;">
+            </div>
+        </div>
+    </form>
+    <script src='{% static "js/jquery.min.js" %}'></script>
+    <script src='{% static "js/md5.js" %}'></script>
+    <script>
+        function validcode_fresh(){
+            var randomnum = Math.ceil(Math.random()*10);
+            $("#validcode2").prop("src","{% url 'get_validcode_img' %}"+randomnum);
+        }
+        $(function () {
+            //点击验证码
+            $("body").on("click","#validcode2",function(){
+                validcode_fresh();
+            })
+            //点击提交
+            $("#sub_btn").click(function () {
+                var username = $("#username").val();
+                var password = $("#password").val();
+                var validcode = $("#validcode").val();
+                var remember = $("#remember").prop("checked");
+                var csrtoken = $("input[name='csrfmiddlewaretoken']").val();
+                username = $.trim(username);
+                password = $.trim(password);
+                validcode = $.trim(validcode);
+                if (username == ""){
+                    $("#error").html("用户名为空");
+                    return;
+                }
+                if (password == ""){
+                    $("#error").html("密码为空");
+                    return;
+                }
+                if (validcode == ""){
+                    $("#error").html("验证码为空");
+                    return;
+                }
+                //密码加密
+                password = hex_md5(password);
+                $("#error").html("");
+                $.ajax({
+                    url:'{% url 'dologin' %}',
+                    type:'post',
+                    data:{'username':username,'password':password,'validcode':validcode,'remember':remember,'csrfmiddlewaretoken':csrtoken},
+                    success:function(res){
+                        if (res['code'] == 201){
+                            $("#error").html(res['error']);
+                            validcode_fresh();
+                        }else{
+                            window.location.href = res['source_url'];
+                        }
+                    },error:function () {
+                        $("#error").html("网络错误");
+                    }
+                })
+            })
+        })
+    </script>
+
+{% endblock %}

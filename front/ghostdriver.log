@@ -1,0 +1,89 @@
+[INFO  - 2019-04-26T05:42:14.003Z] GhostDriver - Main - running on port 37692
+[INFO  - 2019-04-26T05:42:14.069Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2019-04-26T05:42:14.069Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.customHeaders:  - {}
+[INFO  - 2019-04-26T05:42:14.070Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2019-04-26T05:42:14.071Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 0b42d8a0-67e6-11e9-9d1c-1758e728c0aa
+[ERROR - 2019-04-26T05:42:16.314Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.315Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - stack:
+  global code (http://www.mechadvisor.com/index.php?m=Lianmai&c=Production&a=ajax_goods:58)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.769Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.769Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - stack:
+  global code (http://www.mechadvisor.com/index.php?m=Lianmai&c=Production&a=ajax_goods:109)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.804Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.804Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - stack:
+  global code (http://www.mechadvisor.com/index.php?m=Lianmai&c=Production&a=ajax_goods:160)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.834Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.834Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - stack:
+  global code (http://www.mechadvisor.com/index.php?m=Lianmai&c=Production&a=ajax_goods:211)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.852Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.854Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - stack:
+  global code (http://www.mechadvisor.com/index.php?m=Lianmai&c=Production&a=ajax_goods:262)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.859Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.860Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - stack:
+  global code (http://www.mechadvisor.com/index.php?m=Lianmai&c=Production&a=ajax_goods:313)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.865Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.874Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - stack:
+  global code (http://www.mechadvisor.com/index.php?m=Lianmai&c=Production&a=ajax_goods:364)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.890Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.890Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - stack:
+  global code (http://www.mechadvisor.com/index.php?m=Lianmai&c=Production&a=ajax_goods:415)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.893Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.893Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - stack:
+  global code (http://www.mechadvisor.com/index.php?m=Lianmai&c=Production&a=ajax_goods:462)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.983Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.983Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - stack:
+  global code (http://www.mechadvisor.com/index.php?m=Lianmai&c=Production&a=ajax_goods:513)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.995Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.995Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - stack:
+  global code (http://www.mechadvisor.com/index.php?m=Lianmai&c=Production&a=ajax_goods:599)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.996Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - msg: ReferenceError: Can't find variable: $
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2019-04-26T05:42:16.996Z] Session [0b42d8a0-67e6-11e9-9d1c-1758e728c0aa] - page.onError - stack:
+  global code (http://www.mechadvisor.com/index.php?m=Lianmai&c=Production&a=ajax_goods:630)
+
+  phantomjs://platform/console++.js:263 in error

@@ -1,0 +1,158 @@
+{% extends "common.html" %}
+{% load staticfiles %}
+    {% block title %} 注册{% endblock %}
+    {% block selfcss %}
+        <style>
+            #registerform{
+                width:50%;
+                margin:0 auto;
+                min-width:800px;
+            }
+        </style>
+    {% endblock %}
+    {% block common %}
+        <form method="post" action="#" id="registerform">
+            <div class="fields">
+               <div class="field">
+                    <select name="usertype" id="usertype">
+                        <option value="">请选择角色</option>
+                        <option value="0">卖家</option>
+                        <option value="1">买家</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <input type="email" name="email" id="email" placeholder="邮箱" />
+                </div>
+                <div class="field">
+                    <input type="text" name="validcode" id="validcode" placeholder="验证码" style="width: 60%;display: inline-block;min-width: 300px;"><input onclick="get_valicode()" class="valid_btn button" type="button" value="获取验证码" style="padding: 0 30px;float: right;">
+                </div>
+                 <div class="field">
+                    <input type="text" name="username" id="username" placeholder="用户名">
+                </div>
+                 <div class="field">
+                    <input type="password" name="password" id="password" placeholder="密码">
+                </div>
+                 <div class="field">
+                    <input type="password" name="cppassword" id="cppassword" placeholder="确认密码">
+                </div>
+                {% csrf_token %}
+                <div class="field" style="text-align: right;">
+                    <span id="error" style="float: left;color: #f2849e;font-family: 'Source Sans Pro', Helvetica, sans-serif;"></span>
+                    <input id="sub_btn" class="button" type="button" value="提交" style="padding: 0 100px;">
+                </div>
+            </div>
+        </form>
+    {% comment %}<form action="" method="post">
+        <p>用户名: <input type="text" name="username" id="username"></p>
+        <p>密码: <input type="password" name="password" id="password"></p>
+        <p>确认密码: <input type="password" name="cppassword" id="cppassword"></p>
+        <p><input id="sub_btn" type="button" value="提交"></p>
+        <p><span id="error"></span></p>
+        {% csrf_token %}
+    </form>{% endcomment %}
+
+    <script src='{% static "js/jquery.min.js" %}'></script>
+    <script src='{% static "js/md5.js" %}'></script>
+    <script>
+        //验证码获取
+        function get_valicode(){
+            var code_sec = 60;
+            var email = $("#email").val();
+            var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+            var csrtoken = $("input[name='csrfmiddlewaretoken']").val();
+            if(email == ""){
+                $("#error").html("邮箱为空");
+                return;
+            }else if (!reg.test(email)) {
+               $("#error").html("邮件格式错误");
+               return;
+            }
+            $(".valid_btn").attr("disabled",true);
+            var interval = setInterval(function(){
+               code_sec --;
+               $(".valid_btn").val("("+code_sec+"s)");
+               if (code_sec == 0){
+                   $(".valid_btn").val("获取验证码");
+                   $(".valid_btn").attr("disabled",false);
+                   clearInterval(interval);
+               }
+            },1000);
+            $.ajax({
+                url:"{% url 'email_valicode' %}",
+                data:{'email':email, 'csrfmiddlewaretoken':csrtoken},
+                type:'post',
+                success:function(res){
+                    if(res['code'] == "201"){
+                        $("#error").html(res['error']);
+                    }else{
+                        $("#error").html("");
+                    }
+                },error:function(){
+                    $("#error").html("网络错误");
+                }
+
+            })
+        }
+        $(function () {
+            //提交
+            $("#sub_btn").click(function(){
+                var email = $("#email").val();
+                var username = $("#username").val();
+                var password = $("#password").val();
+                var cppassword = $("#cppassword").val();
+                var csrtoken = $("input[name='csrfmiddlewaretoken']").val();
+                var usertype = $("#usertype").children("option:selected").val();
+                var validcode = $("#validcode").val();
+                username = $.trim(username);
+                password = $.trim(password);
+                cppassword = $.trim(cppassword);
+                validcode = $.trim(validcode);
+                email = $.trim(email);
+                if (usertype == ""){
+                    $("#error").html("角色为空");
+                    return;
+                }
+                if (email == ""){
+                    $("#error").html("邮箱为空");
+                    return;
+                }
+                if (validcode == ""){
+                    $("#error").html("验证码为空");
+                    return;
+                }
+                if (username == ""){
+                    $("#error").html("用户名为空");
+                    return;
+                }
+                if (password == ""){
+                    $("#error").html("密码为空");
+                    return;
+                }
+                if (cppassword == ""){
+                    $("#error").html("重复密码为空");
+                    return;
+                }
+                if (password != cppassword){
+                    $("#error").html("密码和重复密码不一致");
+                    return;
+                }
+                //密码加密
+                password = hex_md5(password);
+                $("#error").html("");
+                $.ajax({
+                    url:'{% url 'doregister' %}',
+                    type:'post',
+                    data:{'usertype':usertype,'email':email,'validcode':validcode,'username':username,'password':password,'csrfmiddlewaretoken':csrtoken},
+                    success:function(res){
+                        if (res['code'] == 201){
+                            $("#error").html(res['error']);
+                        }else{
+                            window.location.href = "{% url 'login' %}"
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+
+    {% endblock %}

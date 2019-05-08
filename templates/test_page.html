@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        {% for i in userlist.object_list %}
+
+            <li>{{ i.ut.title }}:{{ i.name }}</li>
+
+        {% endfor %}
+
+        <div>
+            <!--上一页 -->
+            {% if userlist.has_previous %}
+                <a href="{% url 'test_page' %}?page={{ userlist.previous_page_number }}">上一页</a>
+            {% endif %}
+            <!--中间页码 -->
+            {% for i in userlist.paginator.page_range %}
+                    {% if userlist.number == i %}
+                        <a style="color: red" href="{% url 'test_page' %}?page={{ i }}">{{ i }}</a>
+                    {% else %}
+                        <a style="color: blue" href="{% url 'test_page' %}?page={{ i }}">{{ i }}</a>
+                    {% endif %}
+            {% endfor %}
+            <!--下一页 -->
+            {% if userlist.has_next %}
+                <a href="{% url 'test_page' %}?page={{ userlist.next_page_number }}">下一页</a>
+            {% endif %}
+
+        </div>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*
+        k_page_ul
+    上一页a标签的class:k_page_pre
+    页码a标签的class:k_page
+    下一页a标签的class:k_page_next
+    当前页a标签class: k_current_page
+         */
+        .k_page_ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            float: left;
+            width: 100%;
+        }
+        .k_page_ul li{
+            padding: 5px;
+            float: left;
+            min-width: 27px;
+            text-align: center;
+            border: 1px solid dodgerblue;
+            border-radius:3px;
+            margin-right: 10px;
+        }
+        .k_page,.k_page_next,.k_page_pre{
+            color: dodgerblue;
+            text-decoration: none;
+            font-size: 15px;
+            display: inline-block;
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+        }
+        .k_current_page{
+            background-color: dodgerblue;
+        }
+        .k_current_page a{
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    {% for i in userlist %}
+        <li>{{ i.ut.title }}:{{ i.name }}</li>
+    {% endfor %}
+</ul>
+<div>
+    {{ page_obj.get_page|safe }}
+</div>
+</body>
+</html>
